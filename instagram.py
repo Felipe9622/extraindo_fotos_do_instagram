@@ -17,8 +17,8 @@ password = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.CSS_SELECTOR, "input[name='password']")))
 
 #send_keys registra o que fica regitrado dentro da variavel
-username.send_keys("digite seu login")#precisa digitar seu login
-password.send_keys("digite sua senha ")#digite sua senha 
+username.send_keys("digite seu login aqui")#precisa digitar seu login se não ele não funciona 
+password.send_keys("digite sua senha ")#digite sua senha se não ele não funciona 
 
 submit = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']")))
@@ -28,16 +28,10 @@ submit.click()
 
 
 not_now = WebDriverWait(driver, 10).until(
-    EC.element_to_be_clickable((By.XPATH, '//*[@id="react-root"]/section/main/div/div/div/div/button')))
-
-#.click() executa  comando ENTER
-not_now.click()
+    EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Not Now')]"))).click()
 
 not_now1 = WebDriverWait(driver, 10).until(
-    EC.element_to_be_clickable((By.XPATH, '/html/body/div[5]/div/div/div/div[3]/button[2]')))
-
-#.click() executa  comando ENTER
-not_now1.click()
+    EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Not Now')]"))).click()
 
 searchbox = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.XPATH, "//input[@placeholder='Search']")))
@@ -55,7 +49,10 @@ element.click()
 sleep(3)
 
 #executa o comando de rolagem até o final da pagina 
-driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+#(0, document.body.scrollHeight);") significa a quantidades que ele vai 
+# rolar para baixo 0 significaria apenas uma vez
+#driver.execute_script("window.scrollTo(0,10000);")
+driver.execute_script("window.scrollTo(1, document.body.scrollHeight);")
 
 #extrai todas as fotos usando a tag IMG
 images = driver.find_elements_by_tag_name('img')
